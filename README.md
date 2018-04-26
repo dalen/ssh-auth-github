@@ -5,6 +5,9 @@ It fetches the public keys for all members of a specific GitHub team in a specif
 
 At the moment it is made for a single login user, so all members of the team are allowed to login as that user.
 
+All keys are fetched in a single API call using the GitHub V4 API,
+so the request latency should be a lot lower compared to solutions using the V3 API.
+
 ## Usage
 
 * Build with `cargo build --release`, the binary will be in `target/release/ssh-auth-github`.
@@ -15,6 +18,15 @@ At the moment it is made for a single login user, so all members of the team are
 
 You can also create a `ssh-auth-github.ini` in this directory and build a container with it using
 `docker build . -t sshtunnel`. That will create a container running SSH and only allow tunneling as the `tunnel` user.
+
+## Limitations
+
+It only fetches the first 100 users in the team and the first 100 keys for each user.
+It does not yet attempt to do pagination to fetch more than that.
+
+There is no caching, so you might run in to request limits.
+A simple way to do caching is to run this as a cron job and write out the results to the `authorized_keys` file,
+instead of running it as a `AuthorizedKeysCommand`.
 
 ## Related work:
 
