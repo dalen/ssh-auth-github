@@ -3,9 +3,10 @@ extern crate serde;
 extern crate serde_json;
 #[macro_use]
 extern crate serde_derive;
+extern crate ini;
 
 use reqwest::header;
-use std::env;
+use ini::Ini;
 
 #[derive(Deserialize, Debug)]
 struct Response {
@@ -100,16 +101,10 @@ query {{
 }
 
 fn main() {
-    match env::var("GITHUB_TOKEN").ok() {
-        Some(token) => match env::var("GITHUB_ORGANIZATION").ok() {
-            Some(organization) => match env::var("GITHUB_TEAM").ok() {
-                Some(team) => {
-                    query(&token, &organization, &team);
-                }
-                _ => println!("missing GITHUB_TEAM"),
-            },
-            _ => println!("missing GITHUB_ORGANIZATION"),
-        },
-        _ => println!("missing GITHUB_TOKEN"),
-    }
+    let conf = Ini::load_from_file("/etc/ssh-auth-github.ini").unwrap();
+    let github = conf.section(Some("github".to_owned())).unwrap();
+    let token = github.get("token").unwrap();
+    let organization = github.get("organization").unwrap();
+    let team = github.get("team").unwrap();
+    query(&token, &organization, &team);
 }
