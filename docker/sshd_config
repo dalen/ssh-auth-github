@@ -1,0 +1,13 @@
+Port 22
+AddressFamily any
+ListenAddress 0.0.0.0
+ListenAddress ::
+Protocol 2
+PermitRootLogin no
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+PubkeyAuthentication yes
+AllowTcpForwarding yes
+ForceCommand echo "Only tunneling allowed"
+AuthorizedKeysCommand /usr/bin/ssh-auth-github
+AuthorizedKeysCommandUser bastion
