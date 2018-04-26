@@ -55,7 +55,7 @@ struct Query {
     query: String,
 }
 
-fn query(token: &String, organization: &String, team: &String) {
+fn query(token: &str, organization: &str, team: &str) {
     let client = reqwest::Client::new();
 
     let query = Query {
@@ -86,7 +86,7 @@ query {{
         .post("https://api.github.com/graphql")
         .json(&query)
         .header(header::Authorization(header::Bearer {
-            token: token.clone(),
+            token: token.to_string(),
         }))
         .send()
         .unwrap();
