@@ -1,3 +1,4 @@
-Only tunneling is allowed.
+Only tunneling is allowed, no interactive shell.
+Run SSH with -L localport:desthost:destport
 
-Run SSH with -N and -L
+You can also add -N to avoid this message.
