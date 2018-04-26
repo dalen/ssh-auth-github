@@ -3,10 +3,9 @@ extern crate serde;
 extern crate serde_json;
 #[macro_use]
 extern crate serde_derive;
-extern crate ini;
 
 use reqwest::header;
-use ini::Ini;
+use std::fs::File;
 
 #[derive(Deserialize, Debug)]
 struct Response {
@@ -55,6 +54,13 @@ struct Query {
     query: String,
 }
 
+#[derive(Deserialize, Debug)]
+struct Config {
+    token: String,
+    organization: String,
+    team: String,
+}
+
 fn query(token: &str, organization: &str, team: &str) {
     let client = reqwest::Client::new();
 
@@ -101,10 +107,8 @@ query {{
 }
 
 fn main() {
-    let conf = Ini::load_from_file("/etc/ssh-auth-github.ini").unwrap();
-    let github = conf.section(Some("github".to_owned())).unwrap();
-    let token = github.get("token").unwrap();
-    let organization = github.get("organization").unwrap();
-    let team = github.get("team").unwrap();
-    query(&token, &organization, &team);
+    let config_file = File::open("/etc/ssh-auth-github.json").expect("Open configuration file");
+    let config: Config  = serde_json::from_reader(config_file).expect("Parsing configuration file");
+
+    query(&config.token, &config.organization, &config.team);
 }

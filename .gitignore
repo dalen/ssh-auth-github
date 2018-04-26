@@ -6,4 +6,4 @@
 **/*.rs.bk
 
 # Config file
-ssh-auth-github.ini
+ssh-auth-github.json
