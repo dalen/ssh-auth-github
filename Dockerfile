@@ -13,7 +13,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /home/rust/target/release/ssh-auth-github /usr/bin
-RUN adduser --disabled-password --shell /sbin/nologin --gecos Bastion,,,, bastion
+RUN adduser --disabled-password --shell /bin/false --gecos Bastion,,,, bastion
 
 COPY docker/sshd_config /etc/ssh/sshd_config
 COPY --chown=bastion:root ssh-auth-github.ini /etc/ssh-auth-github.ini
