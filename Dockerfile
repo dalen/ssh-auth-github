@@ -19,6 +19,8 @@ COPY docker/sshd_config /etc/ssh/sshd_config
 COPY --chown=bastion:root ssh-auth-github.ini /etc/ssh-auth-github.ini
 RUN chmod 440 /etc/ssh-auth-github.ini
 
+RUN mkdir -p /run/sshd
+
 EXPOSE 22
 
 CMD [ "/usr/sbin/sshd", "-D", "-e" ]
