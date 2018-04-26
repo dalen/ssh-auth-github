@@ -18,9 +18,9 @@ COPY docker/instructions /usr/bin/instructions
 RUN chmod 555 /usr/bin/instructions
 
 COPY --from=builder /home/rust/target/release/ssh-auth-github /usr/bin
-RUN adduser --disabled-password --shell /usr/bin/instructions --gecos Bastion,,,, bastion
+RUN adduser --disabled-password --shell /usr/bin/instructions --gecos Tunnel,,,, tunnel
 
-COPY --chown=bastion:root ssh-auth-github.ini /etc/ssh-auth-github.ini
+COPY --chown=tunnel:root ssh-auth-github.ini /etc/ssh-auth-github.ini
 RUN chmod 440 /etc/ssh-auth-github.ini
 
 RUN mkdir -p /run/sshd
