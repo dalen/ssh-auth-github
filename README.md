@@ -24,7 +24,10 @@ You can also create a `ssh-auth-github.ini` in this directory and build a contai
 It only fetches the first 100 users in the team and the first 100 keys for each user.
 It does not yet attempt to do pagination to fetch more than that.
 
-There is no caching, so you might run in to request limits.
+There is no caching, so you might run in to GitHub request limits.
+At the point of writing the limit is roughly 500,000 public keys per hour.
+So how many login attempts that translates into depends on the size of your team.
+
 A simple way to do caching is to run this as a cron job and write out the results to the `authorized_keys` file,
 instead of running it as a `AuthorizedKeysCommand`.
 
