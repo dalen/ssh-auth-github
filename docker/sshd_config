@@ -10,4 +10,4 @@ PubkeyAuthentication yes
 AllowTcpForwarding yes
 ForceCommand /usr/bin/instructions
 AuthorizedKeysCommand /usr/bin/ssh-auth-github
-AuthorizedKeysCommandUser bastion
+AuthorizedKeysCommandUser tunnel
