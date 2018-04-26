@@ -12,10 +12,14 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-COPY --from=builder /home/rust/target/release/ssh-auth-github /usr/bin
-RUN adduser --disabled-password --shell /bin/false --gecos Bastion,,,, bastion
-
 COPY docker/sshd_config /etc/ssh/sshd_config
+COPY docker/motd /etc/motd
+COPY docker/instructions /usr/bin/instructions
+RUN chmod 555 /usr/bin/instructions
+
+COPY --from=builder /home/rust/target/release/ssh-auth-github /usr/bin
+RUN adduser --disabled-password --shell /usr/bin/instructions --gecos Bastion,,,, bastion
+
 COPY --chown=bastion:root ssh-auth-github.ini /etc/ssh-auth-github.ini
 RUN chmod 440 /etc/ssh-auth-github.ini
 

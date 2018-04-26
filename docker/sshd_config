@@ -8,6 +8,6 @@ PasswordAuthentication no
 ChallengeResponseAuthentication no
 PubkeyAuthentication yes
 AllowTcpForwarding yes
-ForceCommand echo "Only tunneling allowed"
+ForceCommand /usr/bin/instructions
 AuthorizedKeysCommand /usr/bin/ssh-auth-github
 AuthorizedKeysCommandUser bastion
