@@ -23,6 +23,9 @@ RUN adduser --disabled-password --shell /usr/bin/instructions --gecos Tunnel,,,,
 COPY --chown=tunnel:root ssh-auth-github.ini /etc/ssh-auth-github.ini
 RUN chmod 440 /etc/ssh-auth-github.ini
 
+COPY --chown=tunnel:tunnel docker/homedir /home/tunnel
+RUN chmod 700 /home/tunnel/.ssh
+
 RUN mkdir -p /run/sshd
 
 EXPOSE 22
