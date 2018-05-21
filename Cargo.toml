@@ -6,5 +6,5 @@ authors = ["Erik Dalén <erik.gustav.dalen@gmail.com>"]
 [dependencies]
 reqwest = "0.8.5"
 serde_json = "1.0.17"
-serde_derive = "1.0.55"
+serde_derive = "1.0.58"
 serde = "1.0.58"
