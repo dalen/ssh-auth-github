@@ -608,7 +608,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "serde_derive"
-version = "1.0.84"
+version = "1.0.85"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "proc-macro2 0.4.13 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -663,7 +663,7 @@ version = "0.1.0"
 dependencies = [
  "reqwest 0.8.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.85 (registry+https://github.com/rust-lang/crates.io-index)",
- "serde_derive 1.0.84 (registry+https://github.com/rust-lang/crates.io-index)",
+ "serde_derive 1.0.85 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde_json 1.0.36 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
@@ -1026,7 +1026,7 @@ dependencies = [
 "checksum security-framework 0.1.16 (registry+https://github.com/rust-lang/crates.io-index)" = "dfa44ee9c54ce5eecc9de7d5acbad112ee58755239381f687e564004ba4a2332"
 "checksum security-framework-sys 0.1.16 (registry+https://github.com/rust-lang/crates.io-index)" = "5421621e836278a0b139268f36eee0dc7e389b784dc3f79d8f11aabadf41bead"
 "checksum serde 1.0.85 (registry+https://github.com/rust-lang/crates.io-index)" = "534b8b91a95e0f71bca3ed5824752d558da048d4248c91af873b63bd60519752"
-"checksum serde_derive 1.0.84 (registry+https://github.com/rust-lang/crates.io-index)" = "b4d6115a3ca25c224e409185325afc16a0d5aaaabc15c42b09587d6f1ba39a5b"
+"checksum serde_derive 1.0.85 (registry+https://github.com/rust-lang/crates.io-index)" = "a915306b0f1ac5607797697148c223bedeaa36bcc2e28a01441cd638cc6567b4"
 "checksum serde_json 1.0.36 (registry+https://github.com/rust-lang/crates.io-index)" = "574378d957d6dcdf1bbb5d562a15cbd5e644159432f84634b94e485267abbcc7"
 "checksum serde_urlencoded 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)" = "ce0fd303af908732989354c6f02e05e2e6d597152870f2c6990efb0577137480"
 "checksum siphasher 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)" = "0df90a788073e8d0235a67e50441d47db7c8ad9debd91cbf43736a2a92d36537"
