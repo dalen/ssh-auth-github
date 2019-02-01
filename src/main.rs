@@ -4,7 +4,6 @@ extern crate serde_json;
 #[macro_use]
 extern crate serde_derive;
 
-use reqwest::header;
 use std::fs::File;
 
 #[derive(Deserialize, Debug)]
@@ -91,9 +90,7 @@ query {{
     let mut resp = client
         .post("https://api.github.com/graphql")
         .json(&query)
-        .header(header::Authorization(header::Bearer {
-            token: token.to_string(),
-        }))
+        .header("Authorization", format!("token: ${}", token.to_string()))
         .send()
         .unwrap();
 
@@ -108,7 +105,7 @@ query {{
 
 fn main() {
     let config_file = File::open("/etc/ssh-auth-github.json").expect("Open configuration file");
-    let config: Config  = serde_json::from_reader(config_file).expect("Parsing configuration file");
+    let config: Config = serde_json::from_reader(config_file).expect("Parsing configuration file");
 
     query(&config.token, &config.organization, &config.team);
 }
