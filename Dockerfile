@@ -1,4 +1,4 @@
-FROM rust:1.35.0 AS builder
+FROM rust:1.36.0 AS builder
 
 RUN mkdir -p /home/rust
 WORKDIR /home/rust
