@@ -5,7 +5,7 @@ WORKDIR /home/rust
 COPY . .
 RUN cargo build --release
 
-FROM debian:10.2 as runner
+FROM debian:10.7 as runner
 
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server ca-certificates libssl1.1 \
