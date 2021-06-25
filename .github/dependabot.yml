@@ -1,0 +1,29 @@
+version: 2
+updates:
+- package-ecosystem: cargo
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: reqwest
+    versions:
+    - 0.11.0
+    - 0.11.1
+    - 0.11.2
+- package-ecosystem: docker
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: rust
+    versions:
+    - 1.49.0
+    - 1.50.0
+  - dependency-name: debian
+    versions:
+    - "10.7"
+    - "10.8"
